@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Caixa de Entrada{% endblock %}
+{% block content %}
+<h1>Caixa de Entrada</h1>
+<h2>Mensagens Recebidas</h2>
+{% if received_messages %}
+{% for message in received_messages %}
+<p><strong>De: {{ message.sender }}</strong> - {{ message.content }} ({{ message.timestamp }})</p>
+{% endfor %}
+{% else %}
+<p>Nenhuma mensagem recebida.</p>
+{% endif %}
+<h2>Mensagens Enviadas</h2>
+{% if sent_messages %}
+{% for message in sent_messages %}
+<p><strong>Para: {{ message.receiver }}</strong> - {{ message.content }} ({{ message.timestamp }})</p>
+{% endfor %}
+{% else %}
+<p>Nenhuma mensagem enviada.</p>
+{% endif %}
+<a href="{% url 'messages:send_message' %}" class="btn btn-primary">Enviar Mensagem</a>
+{% endblock %}

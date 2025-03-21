@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Excluir Página{% endblock %}
+{% block content %}
+<h1>Excluir Página</h1>
+<p>Tem certeza que deseja excluir "{{ object }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Sim, excluir</button>
+  <a href="{% url 'pages:page_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

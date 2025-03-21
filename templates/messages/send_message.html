@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Enviar Mensagem{% endblock %}
+{% block content %}
+<h1>Enviar Mensagem</h1>
+<form method="post">
+  {% csrf_token %}
+  <select name="recipient">
+    {% for user in users %}
+    <option value="{{ user.id }}">{{ user.username }}</option>
+    {% endfor %}
+  </select>
+  <textarea name="content" required></textarea>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}
